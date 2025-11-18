@@ -1,7 +1,8 @@
-const pressBtn = document.getElementById("pressBtn");
+const pressSection = document.getElementById("pressSection");
+const pressImg = document.getElementById("pressImg");
 const grid = document.getElementById("gridContainer");
 
-// Each animation list
+// animation frames for each item
 const animations = {
     box: ["box-1-icon.svg", "box-2-icon.svg"],
     dance1: ["dance-0-icon.svg", "dance-1-icon.svg", "dance-2-icon.svg"],
@@ -11,7 +12,6 @@ const animations = {
     wish: ["wish-0-icon.svg", "wish-1-icon.svg", "wish-2-icon.svg"]
 };
 
-// Image elements
 const imgElements = {
     box: document.getElementById("anim-box"),
     dance1: document.getElementById("anim-dance1"),
@@ -21,16 +21,16 @@ const imgElements = {
     wish: document.getElementById("anim-wish")
 };
 
-// Start animation on each image
 function animate(img, frames) {
     let index = 0;
     setInterval(() => {
         img.src = `img/${frames[index]}`;
         index = (index + 1) % frames.length;
-    }, 800); // smooth slow animation
+    }, 900);
 }
 
-pressBtn.addEventListener("click", () => {
+pressImg.addEventListener("click", () => {
+    pressSection.classList.add("hidden");
     grid.classList.remove("hidden");
 
     animate(imgElements.box, animations.box);

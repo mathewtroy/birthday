@@ -1,49 +1,103 @@
+:root {
+  --bg: #0f1216;
+  --bg-soft: #171b22;
+  --text: #e6eaf1;
+  --muted: #98a2b3;
+  --border: #242b36;
+  --shadow: 0 10px 40px rgba(0,0,0,.35);
+
+  --accent: #8b5cf6;
+  --accent-hover: #a78bfa;
+
+  --transition-fast: 0.2s ease;
+  --transition-slow: 0.4s ease;
+}
+
 body {
-    background: #f2f2f2;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    color: #333;
+  background: linear-gradient(145deg, var(--bg), var(--bg-soft));
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  transition: background var(--transition-slow), color var(--transition-slow);
 }
 
 .title {
-    font-size: 3rem;
-    color: #e8dfc8;
-    margin-top: 30px;
+  font-size: 3rem;
+  margin-top: 40px;
+  color: var(--accent-hover);
+  text-shadow: 0 4px 18px rgba(0,0,0,.45);
 }
 
 .center {
-    margin: 20px 0;
+  margin-top: 40px;
 }
 
-.press-btn {
-    background: #7d4cff;
-    color: white;
-    padding: 15px 40px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.4rem;
-    cursor: pointer;
-    transition: background 0.3s;
+.press-img {
+  width: 200px;
+  cursor: pointer;
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+  filter: drop-shadow(var(--shadow));
 }
 
-.press-btn:hover {
-    background: #4cd964;
+.press-img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 15px 45px rgba(0,0,0,.6));
+}
+
+.hint {
+  font-size: 1.2rem;
+  color: var(--muted);
+  margin-top: 10px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    width: 80%;
-    margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  width: 85%;
+  margin: 50px auto;
 }
 
 .anim-item {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  background: var(--bg-soft);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition-slow), background var(--transition-slow);
+}
+
+.anim-item:hover {
+  transform: scale(1.05);
+  background: var(--border);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .anim-item {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Phone */
+@media (max-width: 550px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .anim-item {
+    width: 140px;
+    height: 140px;
+  }
 }
