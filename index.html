@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Happy Birthday</title>
+    <title>Happy Birthday 🎉</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="img/cake-icon.svg" />
+
+    <!-- SEO -->
+    <meta name="description" content="Interactive birthday greeting website with animated cats, floating balloons, music effects, and smooth celebration animations.">
+    <meta name="keywords" content="birthday, greeting, animation, balloons, cats, celebration, web app, music, interactive">
+    <meta name="author" content="Mathew Troy">
+
+    <!-- Social sharing -->
+    <meta property="og:title" content="Happy Birthday 🎉">
+    <meta property="og:description" content="A fun interactive birthday webpage with animations, music, and surprises.">
+    <meta property="og:image" content="img/cake-icon.svg">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#8b5cf6">
 
     <link rel="stylesheet" href="styles.css" />
 </head>
@@ -15,19 +26,21 @@
 
     <h1 class="title">Happy Birthday</h1>
 
-    <!-- Music button -->
+    <!-- Music control button -->
     <div class="music-container">
         <img src="img/music-icon.svg" id="musicBtn" class="music-btn" />
     </div>
 
-    <!-- Balloons appear here -->
+    <!-- Balloons floating -->
     <div id="balloonContainer" class="balloon-container"></div>
 
+    <!-- Gift box (press to reveal) -->
     <div class="center" id="pressSection">
         <img src="img/press-icon.svg" id="pressImg" class="press-img" />
         <p class="hint">Press the gift box</p>
     </div>
 
+    <!-- Hidden grid until gift box is pressed -->
     <div id="gridContainer" class="grid hidden">
         <img id="anim-box" class="anim-item" />
         <img id="anim-dance1" class="anim-item" />
