@@ -20,7 +20,6 @@ body {
   color: var(--text);
   margin: 0;
   padding: 0;
-  transition: background var(--transition-slow), color var(--transition-slow);
 }
 
 .title {
@@ -30,10 +29,35 @@ body {
   text-shadow: 0 4px 18px rgba(0,0,0,.45);
 }
 
-.center {
-  margin-top: 40px;
+/* Music button */
+.music-container {
+  margin-top: 15px;
 }
 
+.music-btn {
+  width: 60px;
+  cursor: pointer;
+  filter: drop-shadow(var(--shadow));
+  transition: transform var(--transition-slow), filter var(--transition-slow);
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Music active glow */
+.music-playing {
+  animation: pulse 1.4s infinite ease-in-out;
+  filter: drop-shadow(0 0 12px var(--accent-hover));
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 5px var(--accent-hover)); }
+  50% { transform: scale(1.12); filter: drop-shadow(0 0 16px var(--accent-hover)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--accent-hover)); }
+}
+
+/* Gift box */
 .press-img {
   width: 200px;
   cursor: pointer;
@@ -43,15 +67,9 @@ body {
 
 .press-img:hover {
   transform: scale(1.08);
-  filter: drop-shadow(0 15px 45px rgba(0,0,0,.6));
 }
 
-.hint {
-  font-size: 1.2rem;
-  color: var(--muted);
-  margin-top: 10px;
-}
-
+/* Grid */
 .hidden {
   display: none;
 }
@@ -72,12 +90,28 @@ body {
   border-radius: 12px;
   padding: 15px;
   box-shadow: var(--shadow);
-  transition: transform var(--transition-slow), background var(--transition-slow);
 }
 
-.anim-item:hover {
-  transform: scale(1.05);
-  background: var(--border);
+/* Balloons */
+.balloon-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  animation: rise linear forwards;
+}
+
+@keyframes rise {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-120vh); opacity: 0; }
 }
 
 /* Tablet */
@@ -91,10 +125,11 @@ body {
   }
 }
 
-/* Phone */
+/* Mobile */
 @media (max-width: 550px) {
   .grid {
     grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
   }
   .anim-item {
     width: 140px;

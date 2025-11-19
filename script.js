@@ -2,7 +2,50 @@ const pressSection = document.getElementById("pressSection");
 const pressImg = document.getElementById("pressImg");
 const grid = document.getElementById("gridContainer");
 
-// animation frames for each item
+const musicBtn = document.getElementById("musicBtn");
+const audio = new Audio("sounds/happy.mp3");
+audio.loop = true;
+
+const balloonContainer = document.getElementById("balloonContainer");
+
+// 🎈 Balloon colors
+const balloonColors = [
+    "balloon-red-icon.svg",
+    "balloon-blue-icon.svg",
+    "balloon-white-icon.svg"
+];
+
+// Generate 1 balloon
+function spawnBalloon() {
+    const balloon = document.createElement("img");
+    balloon.className = "balloon";
+
+    // Random color 1/3
+    const randomColor = balloonColors[Math.floor(Math.random() * 3)];
+    balloon.src = `img/${randomColor}`;
+
+    // Random X & scale
+    balloon.style.left = `${Math.random() * 90}vw`;
+    const scale = 0.6 + Math.random() * 0.8;
+    balloon.style.width = `${80 * scale}px`;
+
+    // Random speed (7–14 seconds)
+    const duration = 7 + Math.random() * 7;
+    balloon.style.animationDuration = `${duration}s`;
+
+    balloonContainer.appendChild(balloon);
+
+    // Delete after animation
+    setTimeout(() => balloon.remove(), duration * 1000);
+}
+
+// Infinite balloons
+setInterval(spawnBalloon, 450); // more balloons = smaller delay
+
+
+
+
+// -------------------- ANIMATIONS ------------------------
 const animations = {
     box: ["box-1-icon.svg", "box-2-icon.svg"],
     dance1: ["dance-0-icon.svg", "dance-1-icon.svg", "dance-2-icon.svg"],
@@ -29,6 +72,7 @@ function animate(img, frames) {
     }, 900);
 }
 
+// Show grid after press
 pressImg.addEventListener("click", () => {
     pressSection.classList.add("hidden");
     grid.classList.remove("hidden");
@@ -39,4 +83,22 @@ pressImg.addEventListener("click", () => {
     animate(imgElements.dance2, animations.dance2);
     animate(imgElements.play, animations.play);
     animate(imgElements.wish, animations.wish);
+});
+
+
+// -------------------- MUSIC CONTROL ------------------------
+let musicPlaying = false;
+
+musicBtn.addEventListener("click", () => {
+    if (!musicPlaying) {
+        audio.play();
+        musicBtn.src = "img/stop-music-icon.svg";
+        musicBtn.classList.add("music-playing");
+        musicPlaying = true;
+    } else {
+        audio.pause();
+        musicBtn.src = "img/music-icon.svg";
+        musicBtn.classList.remove("music-playing");
+        musicPlaying = false;
+    }
 });
