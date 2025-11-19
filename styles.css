@@ -1,14 +1,12 @@
 :root {
-  --bg: #0f1216;
+  --bg: #960084;
   --bg-soft: #171b22;
   --text: #e6eaf1;
   --muted: #98a2b3;
   --border: #242b36;
   --shadow: 0 10px 40px rgba(0,0,0,.35);
-
-  --accent: #8b5cf6;
-  --accent-hover: #a78bfa;
-
+  --accent: #167899;
+  --accent-hover: #b8b7be;
   --transition-fast: 0.2s ease;
   --transition-slow: 0.4s ease;
 }
