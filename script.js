@@ -67,7 +67,7 @@ const imgElements = {
 function animate(img, frames) {
     let index = 0;
     setInterval(() => {
-        img.src = `img/${frames[index]}`;
+        img.src = `img/${frames[index]}?v=${Date.now()}`;
         index = (index + 1) % frames.length;
     }, 900);
 }
@@ -91,13 +91,13 @@ let musicPlaying = false;
 
 musicBtn.addEventListener("click", () => {
     if (!musicPlaying) {
-        audio.play();
-        musicBtn.src = "img/stop-music-icon.svg";
+        audio.play().catch(() => console.log("Autoplay blocked"));
+        musicBtn.src = `img/stop-music-icon.svg?v=${Date.now()}`;
         musicBtn.classList.add("music-playing");
         musicPlaying = true;
     } else {
         audio.pause();
-        musicBtn.src = "img/music-icon.svg";
+        musicBtn.src = `img/music-icon.svg?v=${Date.now()}`;
         musicBtn.classList.remove("music-playing");
         musicPlaying = false;
     }
